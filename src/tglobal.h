@@ -1,9 +1,9 @@
 #ifndef TGLOBAL_H
 #define TGLOBAL_H
 
-#define TF_VERSION_STR "1.16.0"
-#define TF_VERSION_NUMBER 0x011600
-#define TF_SRC_REVISION 1357
+#define TF_VERSION_STR "1.17.0"
+#define TF_VERSION_NUMBER 0x011700
+#define TF_SRC_REVISION 1370
 
 #include <QtGlobal>
 #include <QMetaType>
@@ -152,6 +152,7 @@ namespace Tf
 {
     T_CORE_EXPORT TWebApplication *app();
     T_CORE_EXPORT TAppSettings *appSettings();
+    T_CORE_EXPORT const QVariantMap &conf(const QString &configName);
     T_CORE_EXPORT void msleep(unsigned long msecs);
 
     // Xorshift random number generator
