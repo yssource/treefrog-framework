@@ -7,7 +7,13 @@ win32 {
     LIBS += -ltreefrog1
   }
 } else {
-  unix:LIBS += -Wl,-rpath,. -Wl,-rpath,/usr/lib -L/usr/lib -ltreefrog
-  unix:INCLUDEPATH += /usr/include/treefrog
+  unix:!macx {
+    unix:LIBS += -Wl,-rpath,. -Wl,-rpath,/usr/lib -L/usr/lib -ltreefrog
+    unix:INCLUDEPATH += /usr/include/treefrog
+  }
+  macx: {
+    unix:LIBS += -Wl,-rpath,. -Wl,-rpath,/usr/local/lib -L/usr/local/lib -ltreefrog
+    unix:INCLUDEPATH += /usr/local/include/treefrog
+  }
   linux-*:LIBS += -lrt
 }

@@ -47,3 +47,6 @@ tools/tspawn/tspawn
 installer/msi/TreeFrogFiles.wxs
 installer/**/*.msi
 
+.ccls-cache/
+compile_commands.json
+tools/tfmanager/moc_predefs.h
