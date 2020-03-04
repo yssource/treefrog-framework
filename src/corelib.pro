@@ -1,11 +1,14 @@
 TARGET   = treefrog
 TEMPLATE = lib
+CONFIG += conan_basic_setup
+include($$OUT_PWD/conanbuildinfo.pri)
 CONFIG  += shared console c++14
 CONFIG  -= lib_bundle
 QT      += sql network xml qml
 DEFINES += TF_MAKEDLL
-INCLUDEPATH += ../include ../3rdparty/lz4/lib
+# INCLUDEPATH += ../include ../3rdparty/lz4/lib
 DEPENDPATH  += ../include
+INCLUDEPATH += ../include
 MOC_DIR = .obj/
 OBJECTS_DIR = .obj/
 windows:CONFIG(debug, debug|release) {
@@ -31,7 +34,7 @@ windows {
   win32-msvc* {
     LIBS += ../3rdparty/lz4/visual/liblz4_static.lib
   } else {
-    LIBS += ../3rdparty/lz4/lib/release/liblz4.a
+    # LIBS += ../3rdparty/lz4/lib/release/liblz4.a
   }
 
   header.files = $$HEADER_FILES $$HEADER_CLASSES
@@ -49,7 +52,7 @@ windows {
   test.path = $$header.path/TfTest
   INSTALLS += header script test
 } else:unix {
-  LIBS += ../3rdparty/lz4/lib/liblz4.a
+  # LIBS += ../3rdparty/lz4/lib/liblz4.a
   macx:QMAKE_SONAME_PREFIX=@rpath
 
   header.files = $$HEADER_FILES $$HEADER_CLASSES
